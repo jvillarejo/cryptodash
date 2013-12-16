@@ -1,7 +1,5 @@
 require 'http_requester'
 
-require 'nokogiri'
-
 class Scraper
   include HTTPRequester
 
@@ -10,11 +8,9 @@ class Scraper
   end
 
   def get_element_by_id(id)
-    selector = "##{id}"
-    doc.css(selector).first.to_html
+    expression = /<\S*\s*id=\"#{id}\"\s*\S*>\s*\S*<\/\S*>/
+
+    get(@url)[expression]
   end
 
-  def doc
-    Nokogiri::HTML(get(@url))
-  end
 end
