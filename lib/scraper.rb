@@ -1,4 +1,4 @@
-require_relative 'http_requester'
+require 'http_requester'
 
 require 'nokogiri'
 
